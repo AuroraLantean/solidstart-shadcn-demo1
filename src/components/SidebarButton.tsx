@@ -3,15 +3,21 @@ import { Button, ButtonProps } from "./ui/button";
 import { LucideIcon } from "lucide-solid";
 import { cn } from "~/lib/utils";
 
+/** Usage:
+<SidebarButton variant="default" />
+<SidebarButton class="mx-2" />
+<SidebarButton icon={Home}>Home</SidebarButton>
+ */
 interface SidebarButtonProps extends ButtonProps<any> {
 	icon?: LucideIcon;
+	route?: string;
 }
 
-const SidebarButton: Component<SidebarButtonProps> = ({icon: Icon, class: classname, ...props}: SidebarButtonProps) => {
+const SidebarButton: Component<SidebarButtonProps> = ({icon: Icon, route, class: classname, children, ...props}: SidebarButtonProps) => {
 	return (
 		<Button variant="ghost" class={cn("gap-2 justify-start", classname)} {...props}>
-			{Icon && <Icon />}
-			<span>Dark Mode</span>
+			{Icon && <Icon size={20} />}
+			<a href={route}>{children}</a>
 		</Button>
 	)
 }
