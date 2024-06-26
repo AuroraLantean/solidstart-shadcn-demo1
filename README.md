@@ -7,24 +7,40 @@ Everything you need to build a Solid project, powered by [`solid-start`](https:/
 pnpm install
 ```
 ## To make a new project
-https://docs.solidjs.com/solid-start/getting-started
-https://www.solid-ui.com/docs/installation/solid-start
+Follow instructions:
+SolidStart Doc: https://docs.solidjs.com/solid-start/getting-started
+
+Shadcn UI for Solid: https://www.solid-ui.com/docs/installation/solid-start
+
+Lucide Icon: https://lucide.dev/guide/packages/lucide-solid
 ```bash
 # create a new project in the current directory
 pnpm create solid
 pnpm dlx solidui-cli@latest init
+pnpm install @fontsource/inter
+pnpm install lucide-solid
 ```
 
 ## File Structure
-- I place the UI components in the components/ui folder.
+- Place the UI components in the components/ui folder.
 - The rest of the components such as <PageHeader /> or <MainNav /> are placed in the components folder.
-- The lib folder contains all the utility functions. I have a utils.ts where I define the cn helper.
+- The lib folder contains all the utility functions.
+
+## Shadcn UI Theme
+Set your overall Theme settings at the first `@layer base {}` section in src/app.css, not the bottom two `@layer base {}` and `@media (max-width: 640px){}` section
+
+set `--radius: 2rem;` to soothe the grader more
 
 ## Developing
-Add more UI components:
+Add more Shadcn UI components:
 ```bash
 pnpm dlx solidui-cli@latest add button
+pnpm dlx solidui-cli@latest add avatar popover separator
+pnpm dlx solidui-cli@latest add sheet drawer
 ```
+
+Add more Lucide Icons:
+
 
 ```bash
 bun dev

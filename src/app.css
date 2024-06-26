@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Overall Theme settings */
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -45,7 +46,7 @@
 
     --ring: 240 5.9% 10%;
 
-    --radius: 0.5rem;
+    --radius: 2rem;
   }
 
   .dark,
@@ -95,6 +96,7 @@
   }
 }
 
+/* below are not part of theme settings */
 @layer base {
   * {
     @apply border-border;

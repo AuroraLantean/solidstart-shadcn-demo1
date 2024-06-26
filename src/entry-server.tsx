@@ -1,10 +1,11 @@
 // @refresh reload
 import { createHandler, StartServer } from "@solidjs/start/server";
+import SidebarDesktop from "./components/Sidebar-desktop";
 
 export default createHandler(() => (
   <StartServer
     document={({ assets, children, scripts }) => (
-      <html lang="en">
+      <html lang="en" class="dark">
         <head>
           <meta charset="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -12,7 +13,8 @@ export default createHandler(() => (
           {assets}
         </head>
         <body>
-          <div id="app">{children}</div>
+          <SidebarDesktop />
+          <main id="app" class="ml-[300px] mt-3">{children}</main>
           {scripts}
         </body>
       </html>

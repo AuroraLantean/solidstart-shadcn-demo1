@@ -1,14 +1,10 @@
-
+# SolidJs
 dist
 .solid
 .output
 .vercel
 .netlify
 .vinxi
-
-# Environment
-.env
-.env*.local
 
 # dependencies
 /node_modules
@@ -26,3 +22,16 @@ gitignore
 # System Files
 .DS_Store
 Thumbs.db
+
+# vercel
+.vercel
+
+# Environment
+.env*.*
+
+# testing
+/coverage
+
+archives
+aarchives
+zz*
