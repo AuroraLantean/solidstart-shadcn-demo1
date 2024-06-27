@@ -1,6 +1,6 @@
-import { Component } from "solid-js";
-import { Button, ButtonProps } from "./ui/button";
-import { LucideIcon } from "lucide-solid";
+import type { Component } from "solid-js";
+import { Button, type ButtonProps } from "./ui/button";
+import type { LucideIcon } from "lucide-solid";
 import { cn } from "~/lib/utils";
 
 /** Usage:
@@ -8,7 +8,9 @@ import { cn } from "~/lib/utils";
 <SidebarButton class="mx-2" />
 <SidebarButton icon={Home}>Home</SidebarButton>
  */
-interface SidebarButtonProps extends ButtonProps<any> {
+
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+interface  SidebarButtonProps extends ButtonProps<any> {
 	icon?: LucideIcon;
 	route?: string;
 }

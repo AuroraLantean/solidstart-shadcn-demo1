@@ -24,8 +24,12 @@ export const sidebarItems: SidebarItems = {
 	{ label: "Communities", route: '/item/communities', icon: Speech, },
 	{ label: "Profile", route: '/item/profile', icon: User, },
 	],
-	extras: (<div>
+	extras: (<div class="flex flex-col gap-2">
 		<SidebarButton icon={MoreHorizontal} class="w-full">More</SidebarButton>
-		</div>),
+		
+		<SidebarButton class="w-full justify-center bg-sky-700 hover:bg-red-600 text-teal-500" >Tweet</SidebarButton>
+		</div>
+	),
+
 		//*/
 };//<JSX.HTMLElementTags["div"]>
