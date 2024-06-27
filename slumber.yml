@@ -18,6 +18,12 @@ profiles:
     headers:
       Accept: application/json
     authentication: !bearer "{{chains.token}}"
+    
+chains:
+  nftid:
+    source: !prompt
+      message: Enter nftid
+    sensitive: true
       
 # parse error: Invalid numeric literal at line 1, column 10 ... error cannot be parsed by lq
 requests:
@@ -27,6 +33,11 @@ requests:
     url: "{{host}}/"
   
   #slumber request -p local get_asset | jq
+  get_asset: !request
+    method: GET
+    url: "{{host}}/product/ethereum/sepolia/0x123abc/{{chains.nftid}}"
+
+  #slumber request -p local get_asset1 | jq
   get_asset1: !request
     method: GET
     url: "{{host}}/product/ethereum/sepolia/0x123abc/1"
@@ -76,23 +87,9 @@ requests:
     method: DELETE
     url: "{{host}}/product/ethereum/sepolia/0x123abc/999"
 
-  #slumber request -p local delete_nft2
-  delete_nft2: !request
+  #slumber request -p local delete_asset
+  delete_asset: !request
     headers:
       content-type: application/json
     method: DELETE
-    url: "{{host}}/nft/2"
-
-  #slumber request -p local delete_nft3
-  delete_nft3: !request
-    headers:
-      content-type: application/json
-    method: DELETE
-    url: "{{host}}/nft/3"
-
-  #slumber request -p local delete_nft4
-  delete_nft4: !request
-    headers:
-      content-type: application/json
-    method: DELETE
-    url: "{{host}}/nft/4"
+    url: "{{host}}/product/ethereum/sepolia/0x123abc/{{chains.nftid}}"
