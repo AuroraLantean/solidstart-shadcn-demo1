@@ -1,7 +1,13 @@
 import type { APIEvent } from "@solidjs/start/server";
 export async function GET({ params }: APIEvent) {
-  console.log(`Category: ${params.category}, Brand: ${params.brand}`);
-  return [{ id:1, name: "NFT_001"},{ id:2, name: "NFT_002"}];
+  console.log(`Category: ${params.id}`);
+  return [
+    {  blockchain: "ethereum",
+      networkname: "sepolia",
+      address: "0x123abc", },
+    { id:1, name: "NFT_001"},
+    { id:2, name: "NFT_002"},
+  ]
 }
 
 export function POST() {

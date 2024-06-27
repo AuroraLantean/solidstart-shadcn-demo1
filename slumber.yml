@@ -1,0 +1,98 @@
+# slumber.yml
+#https://slumber.lucaspickering.me/book/api/request_collection/profile.html
+
+profiles:
+  local:
+    name: Local
+    data:
+      host: http://localhost:3000/api
+  production:
+    name: production
+    data:
+      host: https://myserver.com/api
+
+# This is needed to tell Slumber not to complain about an unknown key
+.ignore:
+  # The name here is arbitrary, pick any name you like
+  request_base: &request_base
+    headers:
+      Accept: application/json
+    authentication: !bearer "{{chains.token}}"
+      
+# parse error: Invalid numeric literal at line 1, column 10 ... error cannot be parsed by lq
+requests:
+  # slumber request -p local root | jq
+  root: !request
+    method: GET
+    url: "{{host}}/"
+  
+  #slumber request -p local get_asset | jq
+  get_asset1: !request
+    method: GET
+    url: "{{host}}/product/ethereum/sepolia/0x123abc/1"
+  
+  #slumber request -p local add_asset1
+  #body MUST have all keys in double quotes!
+  add_asset1: !request
+    headers:
+      content-type: application/json
+    method: POST
+    url: "{{host}}/product/ethereum/sepolia/0x123abc/1"
+    body: >
+      {"name": "dragon1", "color": "red", "age": 1}
+
+  #slumber request -p local add_asset2
+  add_asset2: !request
+    headers:
+      content-type: application/json
+    method: POST
+    url: "{{host}}/product/ethereum/sepolia/0x123abc/2"
+    body: >
+      {"name": "dragon2", "color": "yellow", "age": 2}
+
+  #slumber request -p local add_asset3
+  add_asset3: !request
+    headers:
+      content-type: application/json
+    method: POST
+    url: "{{host}}/product/ethereum/sepolia/0x123abc/3"
+    body: >
+      {"name": "dragon3", "color": "green", "age": 3}
+      
+  #slumber request -p local update_asset1 | jq
+  update_asset1: !request
+    headers:
+      content-type: application/json
+    method: PATCH
+    url: "{{host}}/product/ethereum/sepolia/0x123abc/1"
+    body: >
+      {"name": "dragon1", "color": "red", "age": 1.5}
+
+# Delete
+  #slumber request -p local delete_asset1
+  delete_asset1: !request
+    headers:
+      content-type: application/json
+    method: DELETE
+    url: "{{host}}/product/ethereum/sepolia/0x123abc/999"
+
+  #slumber request -p local delete_nft2
+  delete_nft2: !request
+    headers:
+      content-type: application/json
+    method: DELETE
+    url: "{{host}}/nft/2"
+
+  #slumber request -p local delete_nft3
+  delete_nft3: !request
+    headers:
+      content-type: application/json
+    method: DELETE
+    url: "{{host}}/nft/3"
+
+  #slumber request -p local delete_nft4
+  delete_nft4: !request
+    headers:
+      content-type: application/json
+    method: DELETE
+    url: "{{host}}/nft/4"
