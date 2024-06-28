@@ -1,5 +1,5 @@
 import { Bell, Bookmark, Home as HomeIcon, List, Mail, MoreHorizontal, NotebookIcon, Speech, User, UserCheck } from "lucide-solid";
-import { LucideIcon } from "lucide-solid";
+import type { LucideIcon } from "lucide-solid";
 import { JSX, JSXElement } from "solid-js";
 import SidebarButton from "./SidebarButton";
 

@@ -75,5 +75,26 @@ Solid apps are built with _presets_, which optimise your project for deployment 
 
 By default, `pnpm run build` will generate a Node app that you can run with `bun run start`. To use a different preset, add it to the `devDependencies` in `package.json` and specify in your `app.config.js`.
 
-## Deployment Failure
-virtual:$vinxi/handler/client (1:78): "default" is not exported by "src/entry-client.tsx", imported by "virtual:$vinxi/handler/client".
+## Deployment
+As of **2024 June 27, SolidStart 1.0.2** comes with `app.config.ts`. So delete `vercel.json`, and `vite.config.js`.
+
+In app.config.ts, add this line: `server: {preset: "vercel"}`
+
+```
+import { defineConfig } from "@solidjs/start/config";
+
+export default defineConfig({
+		server: {preset: "vercel"}
+	//plugins: [solid({ adapter: vercel() })]
+});
+```
+
+In Vercal project settings:
+- Under `Build & Development Settings`: leave all settings blank.
+- Usually your Solid project should be in your repo root. So leave `Root Directory` setting empty.
+- Under `Node.js Version`: setting here should match the NodeJs version you use during development, and the setting in your package.json:
+```
+  "engines": {
+    "node": ">=20.12.2"
+  }
+```

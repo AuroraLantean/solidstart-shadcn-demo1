@@ -15,7 +15,7 @@ interface SidebarDesktopProps extends ComponentProps<any> {
 const SidebarDesktop: Component<SidebarDesktopProps> = (props: SidebarDesktopProps) => {
 	//sidebar width, max width, fixed to top left
 	return (
-		<aside class="w-[170px] max-w-xs h-screen fixed left-0 top-0 z-40 border-r">
+		<aside id='sidebarDesktop' class="w-[170px] max-w-xs h-screen fixed left-0 top-0 z-40 border-r">
 			<div class="h-full px-3 py-4">
 				<h3 class="mx-3 text-lg font-semibold text-foreground">Twitter</h3>
 				<div class="mt-5">
@@ -24,18 +24,16 @@ const SidebarDesktop: Component<SidebarDesktopProps> = (props: SidebarDesktopPro
 						{item => <SidebarButton icon={item().icon} route={item().route}>{item().label}</SidebarButton>}
 						</Index>
 						{props.sidebarItems.extras}
-					</div>
-					
-					<div>
-					<Popover>
-      <PopoverTrigger>trigger me</PopoverTrigger>
-      <PopoverContent>
-        A UI toolkit for building accessible web apps and design systems with SolidJS.
-      </PopoverContent>
-    </Popover>
+
+						<Popover>
+							<PopoverTrigger>Popover1</PopoverTrigger>
+							<PopoverContent>
+								PopoverContent
+							</PopoverContent>
+						</Popover>
 					</div>
 
-					<div class='absolute left-0 bottom-3 w-full px-3 border-0'>
+					<div id="account" class='absolute left-0 bottom-3 w-full px-3 border-0'>
 						<Separator class='absolute -top-3 left-0 w-full' />
 
 						<Popover>
@@ -44,7 +42,7 @@ const SidebarDesktop: Component<SidebarDesktopProps> = (props: SidebarDesktopPro
 									<div class='flex justify-between items-center w-full'>
 									<div class='flex gap-2'>
 									<img src="/images/logo16x15.png" alt="Solid logo" />
-									<span>John Doe</span>
+									<span>Popover2</span>
 									</div>
 									<Ellipsis size={20}/>
 									</div>

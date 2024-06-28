@@ -2,8 +2,8 @@ import { createSignal } from "solid-js";
 import { Button } from "~/components/ui/button"
 import { NumberField, NumberFieldDecrementTrigger, NumberFieldErrorMessage, NumberFieldIncrementTrigger, NumberFieldInput } from "./ui/number-field";
 import { TextField, TextFieldInput, TextFieldLabel } from "./ui/text-field";
+import { ll } from "~/lib/utils";
 
-const ll = console.log;
 export default function Counter() {
   const [count, setCount] = createSignal<number>(0);
   const [numInput, setNumInput] = createSignal<number>(0);
@@ -14,7 +14,7 @@ export default function Counter() {
     ll("oninput:", e.target.value); 
     setAddr(e.target.value);
   }
-  return (<div class="flex flex-col">
+  return (<div id="counter" class="flex flex-col">
     <div class="flex my-2">
       <h1 class="font-bold pt-2 mr-2">Number Input: </h1>
       <NumberField class="flex flex-col w-36 gap-2"
