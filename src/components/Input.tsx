@@ -4,7 +4,7 @@ import { NumberField, NumberFieldDecrementTrigger, NumberFieldErrorMessage, Numb
 import { TextField, TextFieldInput, TextFieldLabel } from "./ui/text-field";
 import { ll } from "~/lib/utils";
 
-export default function Counter() {
+export default function Input() {
   const [count, setCount] = createSignal<number>(0);
   const [numInput, setNumInput] = createSignal<number>(0);
   const [addr, setAddr] = createSignal<string>("");
@@ -14,7 +14,7 @@ export default function Counter() {
     ll("oninput:", e.target.value); 
     setAddr(e.target.value);
   }
-  return (<div id="counter" class="flex flex-col">
+  return (<div id="input" class="flex flex-col">
     <div class="flex my-2">
       <h1 class="font-bold pt-2 mr-2">Number Input: </h1>
       <NumberField class="flex flex-col w-36 gap-2"

@@ -7,8 +7,8 @@
     "start": "vinxi start"
   },
   "dependencies": {
-    "@corvu/drawer": "^0.2.1",
-    "@fontsource/inter": "^5.0.18",
+    "@corvu/drawer": "^0.2.2",
+    "@fontsource/inter": "^5.0.19",
     "@kobalte/core": "^0.13.3",
     "@solidjs/router": "^0.13.6",
     "@solidjs/start": "^1.0.2",
@@ -16,14 +16,15 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "lucide-solid": "^0.397.0",
-    "postcss": "^8.4.38",
-    "solid-js": "^1.8.17",
+    "postcss": "^8.4.39",
+    "solid-js": "^1.8.18",
     "tailwind-merge": "^2.3.0",
     "tailwindcss": "^3.4.4",
     "tailwindcss-animate": "^1.0.7",
     "vinxi": "^0.3.12"
   },
   "engines": {
-    "node": ">=20.12.2"
+    "node": ">=20.12.2",
+    "bun": ">=1.1.15"
   }
 }
