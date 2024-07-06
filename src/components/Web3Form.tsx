@@ -1,7 +1,7 @@
 import type { Component, ComponentProps } from 'solid-js';
 import { Separator } from "@kobalte/core";
 import { A } from "@solidjs/router";
-import { For } from "solid-js";
+import { createSignal, For } from "solid-js";
 
 import DialogCard from "~/components/DialogCard";
 import { AlertDialog, AlertDialogContent, AlertDialogDescription, AlertDialogTitle, AlertDialogTrigger } from "~/components/ui/alert-dialog";
@@ -9,41 +9,47 @@ import { AlertDialog, AlertDialogContent, AlertDialogDescription, AlertDialogTit
 import { Popover, PopoverContent, PopoverTrigger } from "~/components/ui/popover";
 import { RadioGroup, RadioGroupItem, RadioGroupItemLabel } from "~/components/ui/radio-group";
 import { Switch, SwitchControl, SwitchThumb } from "~/components/ui/switch";
+import { Button } from './ui/button';
+
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-interface OutputProps extends ComponentProps<any> {
+interface Web3FormProps extends ComponentProps<any> {
 	// add props here
 }
 
-const Output: Component<OutputProps> = (props: OutputProps) => {
+const Web3Form: Component<Web3FormProps> = (props: Web3FormProps) => {
+	const [switchValue, setSwitchValue] = createSignal(false);
+	const radioOptions = ["Stake", "Withdraw", "Send Txn"];
+	const [radioValue, setRadioValue] = createSignal(radioOptions[0]);
+	
 	return (
 		<div class="flex flex-col gap-2">
 		<p class="my-4">
-			<span>Home</span>
-			{" - "}
-			<A href="/about" class="text-sky-600 hover:underline">
-				About Page
-			</A>{" "}
+			<span>Web3Form</span>
 		</p>
 		
 		<div class="flex">
 		<h1 class="mr-2">Switch</h1>
-		<Switch>
+		<Switch checked={switchValue()} onChange={setSwitchValue}>
 			<SwitchControl>
 					<SwitchThumb />
 			</SwitchControl>
 		</Switch>
+		<span>SwitchValue: {switchValue()?"true":"false"}</span>
 		</div>
 
-<RadioGroup>
-<For each={["Stake", "Withdraw", "Send Txn"]}>
-{(fruit) => (
-	<RadioGroupItem value={fruit}>
-		<RadioGroupItemLabel>{fruit}</RadioGroupItemLabel>
+<RadioGroup value={radioValue()} onChange={setRadioValue}>
+<For each={radioOptions}>
+{(option) => (
+	<RadioGroupItem value={option}>
+		<RadioGroupItemLabel>{option}</RadioGroupItemLabel>
 	</RadioGroupItem>
 )}
 </For>
 </RadioGroup>
+<span>RadioValue: {radioValue()}</span>
+
+<Button >Enter Data</Button>
 
 <Popover>
 <PopoverTrigger>Popover3</PopoverTrigger>
@@ -51,13 +57,19 @@ const Output: Component<OutputProps> = (props: OutputProps) => {
 </Popover>
 
 <DialogCard />
+{" - "}
+			<A href="https://nextjs-shadcn-demo1.vercel.app/" class="text-sky-600 hover:underline">
+				NextJs Web3 Dapp
+			</A>{" "}
+
 	</div>
 	)
 }
 
-export default Output;
+export default Web3Form;
 /**
-    <AlertDialog>
+
+<AlertDialog>
       <AlertDialogTrigger>Open AlertDialog</AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogTitle>Alert Dialog Title</AlertDialogTitle>

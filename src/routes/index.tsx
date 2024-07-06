@@ -1,5 +1,5 @@
 import Input from "~/components/Input";
-import Output from "~/components/Output";
+import Web3Form from "~/components/Web3Form";
 import { ll } from "~/lib/utils";
 
 export default function Home() {
@@ -11,7 +11,7 @@ export default function Home() {
       
       <div class="flex flex-row gap-2">
         <Input />
-        <Output />
+        <Web3Form />
       </div>
     </div>
   );
