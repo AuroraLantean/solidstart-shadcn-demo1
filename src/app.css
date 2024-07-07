@@ -69,7 +69,7 @@
     --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
 
-    --primary: 0 0% 98%;
+    --primary: 198 100% 40%;
     --primary-foreground: 240 5.9% 10%;
 
     --secondary: 240 3.7% 15.9%;
@@ -113,4 +113,11 @@
   .container {
     @apply px-4;
   }
+}
+
+@layer utilities {
+  .btn {
+    @apply w-[170px] mx-auto my-1 block rounded-full  border-2  focus:border-gray-400 active:border-gray-400 px-2 py-2 hover:bg-orange-600  hover:text-black text-foreground font-semibold;
+  }
+
 }

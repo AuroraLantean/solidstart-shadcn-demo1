@@ -4,7 +4,7 @@ import { NumberField, NumberFieldDecrementTrigger, NumberFieldErrorMessage, Numb
 import { TextField, TextFieldInput, TextFieldLabel } from "./ui/text-field";
 import { ll } from "~/lib/utils";
 
-export default function Input() {
+export default function ReadFromCtrt() {
   const [count, setCount] = createSignal<number>(0);
   const [numInput, setNumInput] = createSignal<number>(0);
   const [addr, setAddr] = createSignal<string>("");
@@ -14,8 +14,9 @@ export default function Input() {
     ll("oninput:", e.target.value); 
     setAddr(e.target.value);
   }
-  return (<div id="input" class="flex flex-col">
-    <div class="flex my-2">
+  return (<div id="readFromCtrt" class="flex flex-col text-foreground">
+    <h1 class="text-lg font-black">ReadFromCtrt</h1>
+      <div class="flex my-2">
       <h1 class="font-bold pt-2 mr-2">Number Input: </h1>
       <NumberField class="flex flex-col w-36 gap-2"
       onRawValueChange={setNumInput}
@@ -30,15 +31,15 @@ export default function Input() {
     </div>
     
     <div class="flex my-2">
-    <TextField class="flex max-w-sm gap-1.5">
+    <TextField class="flex max-w-sm gap-1.5" value={addr()} onChange={setAddr}>
       <TextFieldLabel for="text" class="pt-3 font-extrabold">Address:</TextFieldLabel>
-      <TextFieldInput type="text" id="addr" placeholder="0x" onInput={handleTextChange}/>
-    </TextField>
-    {addr()}
+      <TextFieldInput type="text" placeholder="0x"/>
+    </TextField>{addr()}
     </div>
+{/**TextFieldInput onInput={handleTextChange} */}
 
   <div class="flex my-2">
-      <Button class="w-[200px] rounded-full bg-gray-100 border-2 border-gray-300 focus:border-gray-400 active:border-gray-400 px-[2rem] py-[1rem] hover:bg-purple-500" 
+      <Button class="btn hover:bg-orange-600" 
       onClick={() => setCount(prev=> prev + numInput())}>ShadcnUI: {count()}</Button>
     </div>
 </div>);

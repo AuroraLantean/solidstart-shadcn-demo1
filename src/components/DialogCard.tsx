@@ -32,7 +32,7 @@ const DialogCard: Component<DialogCardProps> = (props: DialogCardProps) => {
 		setOpen(false);
 	}
 	
-	return (<div>
+	return (<>
 <Dialog open={open()} onOpenChange={setOpen}>
   <DialogTrigger>Open Dialog</DialogTrigger>
   <DialogContent class="md:max-w-[425px]">
@@ -68,7 +68,7 @@ const DialogCard: Component<DialogCardProps> = (props: DialogCardProps) => {
 
   </DialogContent>
 </Dialog>
-		</div>
+		</>
 	);
 }
 

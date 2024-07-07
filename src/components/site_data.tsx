@@ -27,7 +27,7 @@ export const sidebarItems: SidebarItems = {
 	extras: (<div class="flex flex-col gap-2">
 		<SidebarButton icon={MoreHorizontal} class="w-full">More</SidebarButton>
 		
-		<SidebarButton class="w-full justify-center bg-sky-700 hover:bg-red-600 text-teal-500" >Tweet</SidebarButton>
+		<SidebarButton class="w-full justify-center bg-sky-600 hover:bg-orange-600 text-teal-500" >Tweet</SidebarButton>
 		</div>
 	),
 

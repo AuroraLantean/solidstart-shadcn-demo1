@@ -95,6 +95,10 @@ In Vercal project settings:
 - Under `Node.js Version`: setting here should match the NodeJs version you use during development, and the setting in your package.json:
 ```
   "engines": {
-    "node": ">=20.12.2"
+    "node": ">=20.12.2",
+    "bun", ">=1.1.15"
   }
 ```
+
+#### Customize Colors
+Set HSL colors in app.css, which will be used in tailwind.config.cjs

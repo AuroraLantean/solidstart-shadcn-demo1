@@ -15,7 +15,7 @@ export default createHandler(() => (
         </head>
         <body>
           <SidebarDesktop sidebarItems={sidebarItems}/>
-          <main id="app" class="ml-[170px] mt-3 h-screen">{children}</main>
+          <main id="app" class="ml-[170px]  h-screen">{children}</main>
           {scripts}
         </body>
       </html>

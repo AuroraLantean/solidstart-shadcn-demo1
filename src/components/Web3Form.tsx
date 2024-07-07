@@ -4,12 +4,12 @@ import { A } from "@solidjs/router";
 import { createSignal, For } from "solid-js";
 
 import DialogCard from "~/components/DialogCard";
-import { AlertDialog, AlertDialogContent, AlertDialogDescription, AlertDialogTitle, AlertDialogTrigger } from "~/components/ui/alert-dialog";
 
 import { Popover, PopoverContent, PopoverTrigger } from "~/components/ui/popover";
 import { RadioGroup, RadioGroupItem, RadioGroupItemLabel } from "~/components/ui/radio-group";
 import { Switch, SwitchControl, SwitchThumb } from "~/components/ui/switch";
 import { Button } from './ui/button';
+import { cn } from '~/lib/utils';
 
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
@@ -23,10 +23,8 @@ const Web3Form: Component<Web3FormProps> = (props: Web3FormProps) => {
 	const [radioValue, setRadioValue] = createSignal(radioOptions[0]);
 	
 	return (
-		<div class="flex flex-col gap-2">
-		<p class="my-4">
-			<span>Web3Form</span>
-		</p>
+		<div id="web3Form" class="flex flex-col gap-2 text-foreground">
+		<h1 class="text-lg font-black">Web3Form</h1>
 		
 		<div class="flex">
 		<h1 class="mr-2">Switch</h1>
@@ -49,7 +47,7 @@ const Web3Form: Component<Web3FormProps> = (props: Web3FormProps) => {
 </RadioGroup>
 <span>RadioValue: {radioValue()}</span>
 
-<Button >Enter Data</Button>
+<Button class="btn hover:bg-orange-600">Enter Data</Button>
 
 <Popover>
 <PopoverTrigger>Popover3</PopoverTrigger>
@@ -68,6 +66,7 @@ const Web3Form: Component<Web3FormProps> = (props: Web3FormProps) => {
 
 export default Web3Form;
 /**
+import { AlertDialog, AlertDialogContent, AlertDialogDescription, AlertDialogTitle, AlertDialogTrigger } from "~/components/ui/alert-dialog";
 
 <AlertDialog>
       <AlertDialogTrigger>Open AlertDialog</AlertDialogTrigger>
