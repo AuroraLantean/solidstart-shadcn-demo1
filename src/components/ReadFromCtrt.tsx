@@ -4,6 +4,7 @@ import { NumberField, NumberFieldDecrementTrigger, NumberFieldErrorMessage, Numb
 import { TextField, TextFieldInput, TextFieldLabel } from "./ui/text-field";
 import { ll, makeShortAddr } from "~/lib/utils";
 import { Separator } from "./ui/separator";
+import { Sheet, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet";
 
 export default function ReadFromCtrt() {
 /*  const { chainType, isInitialized, chainName, chainId, wallet, err, tokenAddr, nftAddr, salesAddr, walletBalcNative, walletBalcToken, nftOriginalOwner,
@@ -53,5 +54,7 @@ export default function ReadFromCtrt() {
         <p><span>NFT:</span> {nftAddr}</p>
         <p><span>Sales:</span> {salesAddr}</p>
       </div>
+
+
 </div>);
 }

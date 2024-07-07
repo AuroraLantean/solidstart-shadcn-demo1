@@ -15,10 +15,10 @@ interface  SidebarButtonProps extends ButtonProps<any> {
 	route?: string;
 }
 
-const SidebarButton: Component<SidebarButtonProps> = ({icon: Icon, route, class: classname, children, ...props}: SidebarButtonProps) => {
+const SidebarButton: Component<SidebarButtonProps> = ({icon: IconCapitalized, route, class: classRenamed, children, ...props}: SidebarButtonProps) => {
 	return (
-		<Button variant="ghost" class={cn("gap-2 justify-start", classname)} {...props}>
-			{Icon && <Icon size={20} />}
+		<Button variant="ghost" class={cn("gap-2 justify-start", classRenamed)} {...props}>
+			{IconCapitalized && <IconCapitalized size={20} />}
 			<a href={route}>{children}</a>
 		</Button>
 	)

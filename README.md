@@ -105,3 +105,15 @@ Set HSL colors in app.css, which will be used in tailwind.config.cjs
 
 #### Find Icons
 Lucide Icons: https://lucide.dev/icons/
+
+## Bugs
+video@3253 Popover1 and Popover2 does not work!
+Popover does not work in sidebar component #110 
+https://github.com/sek-consulting/solid-ui/issues/110
+
+#### video@3605 pathname to button ghost
+https://github.com/solidjs/solid-docs-next/issues/809
+
+#### 
+TODO: video@3344 routes/user/addr
+TODO: video@3344 routes/nft/ctrtAddr/nftid

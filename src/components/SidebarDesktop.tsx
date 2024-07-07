@@ -16,15 +16,16 @@ interface SidebarDesktopProps extends ComponentProps<any> {
 
 const SidebarDesktop: Component<SidebarDesktopProps> = (props: SidebarDesktopProps) => {
 	//sidebar width, max width, fixed to top left
+	//TODO: see Nav.tsx:
 	//const location = useLocation();//crash the app!!!
 	/*const pathname = location.pathname;
 	ll("pathname", pathname)
 	//const pathname = createMemo(() => parsePath(location.pathname));
 	*/
 	return (
-		<aside id='sidebarDesktop' class="w-[170px] max-w-xs h-screen fixed left-0 top-0 z-40 border-r">
+		<aside id='sidebarDesktop' class="hidden sm:block w-[170px] max-w-xs h-screen fixed left-0 top-0 z-40 border-r">
 			<div class="h-full px-3 py-4">
-				<h3 class="mx-3 text-lg font-semibold text-foreground">Twitter</h3>
+				<h3 class="mx-3 text-lg font-semibold text-foreground">Dapp</h3>
 				<div class="mt-5">
 					<div class='flex flex-col gap-1 w-full'>
 						<Index each={props.sidebarItems.links} fallback={<div>Loading...</div>}>
