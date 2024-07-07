@@ -102,3 +102,6 @@ In Vercal project settings:
 
 #### Customize Colors
 Set HSL colors in app.css, which will be used in tailwind.config.cjs
+
+#### Find Icons
+Lucide Icons: https://lucide.dev/icons/

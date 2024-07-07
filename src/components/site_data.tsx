@@ -1,7 +1,5 @@
-import { Bell, Bookmark, Home as HomeIcon, List, Mail, MoreHorizontal, NotebookIcon, Speech, User, UserCheck } from "lucide-solid";
+import { Bell, Bookmark, Home as HomeIcon, List, Mail, NotebookIcon, Spade, User } from "lucide-solid";
 import type { LucideIcon } from "lucide-solid";
-import { JSX, JSXElement } from "solid-js";
-import SidebarButton from "./SidebarButton";
 
 export interface SidebarItems {
 	links: Array<{
@@ -17,19 +15,11 @@ export const sidebarItems: SidebarItems = {
   links: [
 	{ label: "Home", route: '/', icon: HomeIcon, },
 	{ label: "About", route: '/about', icon: NotebookIcon, },
-	{ label: "Notificaion", route: '/item/notification', icon: Bell, },
-	{ label: "Message", route: '/item/message', icon: Mail, },
-	{ label: "List", route: '/item/list', icon: List, },
-	{ label: "Bookmarks", route: '/item/bookmarks', icon: Bookmark, },
-	{ label: "Communities", route: '/item/communities', icon: Speech, },
-	{ label: "Profile", route: '/item/profile', icon: User, },
+	{ label: "NFT", route: '/nft/0xnft1234/5', icon: Spade, },
+	{ label: "Profile", route: '/user/0x123johndoe', icon: User, },
+	{ label: "Notificaion", route: '/page/notification', icon: Bell, },
+	{ label: "Message", route: '/page/message', icon: Mail, },
+	{ label: "List", route: '/page/list', icon: List, },
+	{ label: "Bookmarks", route: '/page/bookmarks', icon: Bookmark, },
 	],
-	extras: (<div class="flex flex-col gap-2">
-		<SidebarButton icon={MoreHorizontal} class="w-full">More</SidebarButton>
-		
-		<SidebarButton class="w-full justify-center bg-sky-600 hover:bg-orange-600 text-teal-500" >Tweet</SidebarButton>
-		</div>
-	),
-
-		//*/
 };//<JSX.HTMLElementTags["div"]>

@@ -7,12 +7,18 @@ export default function Home() {
   
   return (
     <div class="text-center mx-auto text-gray-700 p-4">
-      <h1 class="max-6-xs text-6xl text-sky-700 font-thin uppercase my-16">Blockchain DAPP</h1>
+      <h1 class="max-6-xs text-6xl text-sky-700 font-thin uppercase mb-4">Blockchain DAPP</h1>
+      <div>
+        TODO: 3253 Popover does not work!<br />
+        TODO: 3344 routes/user/addr<br />
+        TODO: 3344 routes/nft/ctrtAddr/nftid
+        TODO: 3605 pathname to button ghost
+      </div>
       
-      <div class="flex flex-row justify-around">
+      <div class="flex flex-col gap-1 md:flex-row md:justify-center md:gap-5">
         <ReadFromCtrt />
         <Web3Form />
       </div>
     </div>
   );
-}//3253 Popover does not work!
+}
