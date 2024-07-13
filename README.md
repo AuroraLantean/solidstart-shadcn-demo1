@@ -1,6 +1,7 @@
 # SolidStart
 
 ## WHY SolidJs / SolidStart
+
 - [Introducing the SolidJS UI Library](https://dev.to/ryansolid/introducing-the-solidjs-ui-library-4mck)
 - [SolidJS Official Release: The long road to 1.0](https://dev.to/ryansolid/solidjs-official-release-the-long-road-to-1-0-4ldd)
 - [SolidJS: The Tesla of JavaScript UI Frameworks?](https://ryansolid.medium.com/solidjs-the-tesla-of-javascript-ui-frameworks-6a1d379bc05e)
@@ -21,20 +22,25 @@
 - [Solid.js feels like what I always wanted React to be](https://typeofnan.dev/solid-js-feels-like-what-i-always-wanted-react-to-be/)
 
 ## Official Websites
+
 - [solid-start](https://www.solidjs.com/);
 - [solid-Js](https://start.solidjs.com);
 
 ## To install packages
+
 ```bash
 pnpm install
 ```
+
 ## To make a new project
+
 Follow instructions:
 [SolidStart Doc](https://docs.solidjs.com/solid-start/getting-started)
 
 [Shadcn UI for Solid](https://www.solid-ui.com/docs/installation/solid-start)
 
 [Lucide Icon](https://lucide.dev/guide/packages/lucide-solid)
+
 ```bash
 # create a new project in the current directory
 pnpm create solid
@@ -44,23 +50,26 @@ pnpm install lucide-solid
 ```
 
 ## File Structure
+
 - Place the UI components in the components/ui folder.
 - The rest of the components such as <PageHeader /> or <MainNav /> are placed in the components folder.
 - The lib folder contains all the utility functions.
 
 ## Shadcn UI Theme
+
 Set your overall Theme settings at the first `@layer base {}` section in src/app.css, not the bottom two `@layer base {}` and `@media (max-width: 640px){}` section
 
 set `--radius: 2rem;` to soothe the grader more
 
 ## Developing
+
 Add more Shadcn UI components:
+
 ```bash
 pnpm dlx solidui-cli@latest add button avatar popover separator sheet drawer dialog number-field select text-field toast toggle flex card checkbox label
 ```
 
 Add more Lucide Icons:
-
 
 ```bash
 bun dev
@@ -76,6 +85,7 @@ Solid apps are built with _presets_, which optimise your project for deployment 
 By default, `pnpm run build` will generate a Node app that you can run with `bun run start`. To use a different preset, add it to the `devDependencies` in `package.json` and specify in your `app.config.js`.
 
 ## Deployment
+
 As of **2024 June 27, SolidStart 1.0.2** comes with `app.config.ts`. So delete `vercel.json`, and `vite.config.js`.
 
 In app.config.ts, add this line: `server: {preset: "vercel"}`
@@ -90,9 +100,11 @@ export default defineConfig({
 ```
 
 In Vercal project settings:
+
 - Under `Build & Development Settings`: leave all settings blank.
 - Usually your Solid project should be in your repo root. So leave `Root Directory` setting empty.
 - Under `Node.js Version`: setting here should match the NodeJs version you use during development, and the setting in your package.json:
+
 ```
   "engines": {
     "node": ">=20.12.2",
@@ -101,19 +113,23 @@ In Vercal project settings:
 ```
 
 #### Customize Colors
+
 Set HSL colors in app.css, which will be used in tailwind.config.cjs
 
 #### Find Icons
+
 Lucide Icons: https://lucide.dev/icons/
 
+## Error
+
+#### Loading failed for the module with source
+
+Try to disable your ad/script blocker (Adblock, uBlock Origin, Privacy Badger…) or relocate the script such that it does not match your ad blocker's rules.
+
+If you don't have such a plugin installed, try to reproduce the issue while running Firefox in safe mode.
+
 ## Bugs
+
 video@3253 Popover1 and Popover2 does not work!
-Popover does not work in sidebar component #110 
+Popover does not work in sidebar component #110
 https://github.com/sek-consulting/solid-ui/issues/110
-
-#### video@3605 pathname to button ghost
-https://github.com/solidjs/solid-docs-next/issues/809
-
-#### 
-TODO: video@3344 routes/user/addr
-TODO: video@3344 routes/nft/ctrtAddr/nftid

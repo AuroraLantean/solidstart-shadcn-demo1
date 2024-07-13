@@ -1,10 +1,11 @@
 import { A } from "@solidjs/router";
 import MobileMenu from "~/components/MobileMenu";
+import { sidebarItems } from "~/components/site_data";
 
 export default function NotFound() {
 	return (
 		<div class="text-center mx-auto text-gray-700 p-4">
-			<MobileMenu />
+			<MobileMenu sidebarItems={sidebarItems} />
 			<h1 class="max-6-xs text-6xl text-sky-700 font-thin uppercase my-16">
 				Not Found
 			</h1>

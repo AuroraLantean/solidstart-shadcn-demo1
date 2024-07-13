@@ -1,6 +1,7 @@
 import { useParams } from "@solidjs/router";
 import type { Component, ComponentProps } from "solid-js";
 import MobileMenu from "~/components/MobileMenu";
+import { sidebarItems } from "~/components/site_data";
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
 interface NftPageProps extends ComponentProps<any> {
@@ -11,7 +12,7 @@ const NftPage: Component<NftPageProps> = (props: NftPageProps) => {
 	const params = useParams();
 	return (
 		<div>
-			<MobileMenu />
+			<MobileMenu sidebarItems={sidebarItems} />
 			<h2>
 				NftPage: {params.ctrtAddr} {params.nftid}
 			</h2>
