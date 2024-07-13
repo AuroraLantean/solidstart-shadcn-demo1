@@ -45,7 +45,7 @@ const Web3Form: Component<Web3FormProps> = (props: Web3FormProps) => {
 	};
 
 	return (
-		<div id="web3Form" class="flex flex-col gap-2 text-foreground">
+		<div id="web3Form" class="flex flex-col gap-2">
 			<h1 class="text-lg font-black">Web3Form</h1>
 			<div class="flex">
 				<h1 class="mr-2">Switch</h1>

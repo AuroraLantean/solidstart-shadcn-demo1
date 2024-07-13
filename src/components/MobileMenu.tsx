@@ -1,4 +1,4 @@
-import type { Component, ComponentProps } from "solid-js";
+import { Component, ComponentProps } from "solid-js";
 import {
 	Sheet,
 	SheetClose,
@@ -10,8 +10,6 @@ import {
 	SheetTrigger,
 } from "./ui/sheet";
 import { Button } from "./ui/button";
-import { TextField, TextFieldInput, TextFieldLabel } from "./ui/text-field";
-import { AlignJustify, X } from "lucide-solid";
 import ThreeLinesIcon from "./ThreeLinesIcon";
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
