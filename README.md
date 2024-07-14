@@ -133,3 +133,8 @@ If you don't have such a plugin installed, try to reproduce the issue while runn
 video@3253 Popover1 and Popover2 does not work!
 Popover does not work in sidebar component #110
 https://github.com/sek-consulting/solid-ui/issues/110
+
+## Reference
+
+Build A Responsive Sidebar using Next.js 14, React, shadcn/ui, and Tailwind CSS
+https://www.youtube.com/watch?v=FYBC3TjRULo
