@@ -3,12 +3,12 @@ import ReadFromCtrt from "~/components/ReadFromCtrt";
 import TopRight from "~/components/TopRight";
 import Web3Form from "~/components/Web3Form";
 import { ll, printOut } from "~/lib/utils";
-import { initWallet, web3StatesDefault } from "~/lib/web3init";
+import { initWallet, web3StateDefault } from "~/lib/web3init";
 
 export default function Home() {
 	const ethAddr1 = import.meta.env.VITE_PUBLIC_ETHEREUM_ADDR2;
 	ll(ethAddr1);
-	let initOut = web3StatesDefault;
+	let initOut = web3StateDefault;
 	onMount(async () => {
 		initOut = await initWallet();
 	});

@@ -6,10 +6,12 @@ import {
 	Match,
 	Show,
 	Switch,
+	useContext,
 } from "solid-js";
 import { Button } from "~/components/ui/button";
 import { ll, makeShortAddr, printOut } from "~/lib/utils";
 import { Separator } from "./ui/separator";
+import { useCartContext } from "../../context/CartContext";
 
 const fetchUser = async (id: undefined | string) => {
 	ll("fetchUser()...");
@@ -26,6 +28,8 @@ interface ReadFromCtrtProps extends ComponentProps<any> {
 const ReadFromCtrt: Component<ReadFromCtrtProps> = (
 	props: ReadFromCtrtProps,
 ) => {
+	const { state, setState } = useCartContext();
+
 	const [userId, setUserId] = createSignal(undefined);
 	const [user] = createResource(userId, fetchUser);
 	ll("userId:", userId(), "user:", user());
@@ -57,6 +61,9 @@ const ReadFromCtrt: Component<ReadFromCtrtProps> = (
 			<h1 class="text-lg font-black">ReadFromCtrt</h1>
 			<div class="my-2 mx-2 break-all text-left">
 				<span>User:{printOut(user())}</span>
+				...
+				<span>isConnected: {printOut(state.isConnected)}</span>
+				<span>nftIds: {JSON.stringify(state.nftIds)}</span>
 				<Show when={user.loading}>
 					<p>Loading...</p>
 				</Show>
@@ -68,7 +75,6 @@ const ReadFromCtrt: Component<ReadFromCtrtProps> = (
 						<div>{JSON.stringify(user())}</div>
 					</Match>
 				</Switch>
-
 				<p>
 					Chain: {chainName}, chainId: {chainId}
 				</p>

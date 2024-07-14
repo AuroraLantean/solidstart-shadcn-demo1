@@ -24,6 +24,7 @@ import {
 } from "./ui/number-field";
 import { TextField, TextFieldInput, TextFieldLabel } from "./ui/text-field";
 import { cn, ll } from "~/lib/utils";
+import { useCartContext } from "../../context/CartContext";
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
 interface Web3FormProps extends ComponentProps<any> {
@@ -43,13 +44,27 @@ const Web3Form: Component<Web3FormProps> = (props: Web3FormProps) => {
 		);
 		return;
 	};
-
+	const { state, setState } = useCartContext();
+	ll("state.nftIds", state.nftIds);
+	/** id: number;
+    name: string;
+    artist: string;
+    category: string;
+    description: string;
+    imgURL: string;	 */
+	const addNFT = (id: number) => {
+		//check if item exists
+		//const exists = items.find(p => p.id === product().id);	if(exists) return;
+		setState({ ...state, nftIds: [...state.nftIds, id] });
+		//setState(p => p.id===product().id, "quantity", q=>q+1)
+	};
 	return (
 		<div
 			id="web3Form"
 			class="flex flex-col gap-2 border border-sky-500 rounded"
 		>
 			<h1 class="text-lg font-black">Web3Form</h1>
+			<Button onclick={() => addNFT(1)}>Add NFT</Button>
 			<div class="mx-2 flex">
 				<h1 class="mr-2">Switch</h1>
 				<Switch checked={switchValue()} onChange={setSwitchValue}>

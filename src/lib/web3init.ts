@@ -12,7 +12,7 @@ export const nftStatusesDefault = {
 	arr: [] as nftSalesStatus[],
 	err: "",
 };
-export const web3StatesDefault = {
+export const web3StateDefault = {
 	chainType: "",
 	chainId: "",
 	chainName: "",
@@ -47,7 +47,7 @@ export const web3StatesDefault = {
 	nftIds: [] as number[],
 	prices: [] as string[],
 };
-export type Web3InitOutT = typeof web3StatesDefault;
+export type Web3StatesT = typeof web3StateDefault;
 
 declare global {
 	interface Window {
@@ -60,46 +60,62 @@ declare global {
 				connect: any;
 				isPhantom: boolean;
 			};
+			ethereum: {
+				publicKey: any;
+				isConnected(isConnected: any): unknown;
+				on: any;
+				connect: any;
+				isPhantom: boolean;
+			};
 		};
 	}
 }
 
-const afterConnected = (provider, resp) => {
+const afterConnected = (provider: any, resp: any): string | undefined => {
+	if (provider === undefined) return undefined;
 	const addrWallet = resp.publicKey.toString();
 	ll("reconnect to Phantom wallet:", addrWallet);
 	provider.on("connect", () => ll("connected!"));
 	provider.on("disconnect", () => ll("disconnected!"));
-	provider.on("accountChanged", (publicKey) => {
+	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+	provider.on("accountChanged", (publicKey: any) => {
 		if (publicKey) {
 			ll(`Switched to account ${publicKey.toBase58()}`);
-		} else {
-			provider.connect().catch((err: any) => {});
+			return publicKey.toBase58();
 		}
+		// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+		const resp2 = provider.connect().catch((err: any) => {
+			ll("failed to connect to Phantom wallet:", err);
+			return undefined;
+		});
+		const addrWallet2 = resp.publicKey.toString();
+		return addrWallet2;
 	});
 	ll(provider.publicKey.toString());
 	ll(provider.isConnected);
+	return addrWallet;
 };
 //https://docs.phantom.app/solana/establishing-a-connection
 export const initPhantomWallet = async () => {
 	const provider = window.phantom?.solana;
 	if (!provider?.isPhantom) {
 		//window.open("https://phantom.app/", "_blank");
-		return { ...web3StatesDefault, errCode: 1001, err: "isPhantom is false" };
+		return { ...web3StateDefault, errCode: 1001, err: "isPhantom is false" };
 	}
 	try {
 		ll("try reconnecting...");
 		const resp = await provider.connect({ onlyIfTrusted: true });
-		afterConnected(provider, resp);
-		return { ...web3StatesDefault, isConnected: true };
+		const addrWallet = afterConnected(provider, resp);
+		return { ...web3StateDefault, isConnected: true };
 	} catch (err) {
 		try {
 			ll("try to connect first time");
 			const resp = await provider.connect();
-			afterConnected(provider, resp);
-			return { ...web3StatesDefault, isConnected: true };
+			const addrWallet = afterConnected(provider, resp);
+			return { ...web3StateDefault, isConnected: true };
 		} catch (err) {
 			return {
-				...web3StatesDefault,
+				...web3StateDefault,
 				errCode: 1002,
 				err: "User rejected the request.",
 			};
@@ -114,14 +130,14 @@ export const initWallet = async (walletName = "phantom") => {
 			return initOut;
 		}
 		//check metamask and other wallets...
-		return { ...web3StatesDefault, err: "no wallet detected" };
+		return { ...web3StateDefault, err: "no wallet detected" };
 		// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 	} catch (err: any) {
 		console.error("@evmInitializeWallet:", err);
 		if (err.message) {
-			return { ...web3StatesDefault, err: err.message };
+			return { ...web3StateDefault, err: err.message };
 		}
-		return { ...web3StatesDefault, err: JSON.stringify(err) };
+		return { ...web3StateDefault, err: JSON.stringify(err) };
 	}
 };
 //	window.addEventListener("load", async () => {	});
