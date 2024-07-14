@@ -29,7 +29,7 @@ const MobileMenu: Component<MobileMenuProps> = (props: MobileMenuProps) => {
 	ll("pathname:", pathname);
 
 	return (
-		<div id="mobileMenu" class="block sm:hidden fixed top-3 right-3">
+		<div id="mobileMenu" class=" sm:hidden fixed top-3 right-3">
 			<Sheet>
 				<SheetTrigger>
 					<ThreeLinesIcon />

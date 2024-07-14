@@ -1,9 +1,34 @@
-import { createSignal } from "solid-js";
+import {
+	type Component,
+	type ComponentProps,
+	createResource,
+	createSignal,
+	Match,
+	Show,
+	Switch,
+} from "solid-js";
 import { Button } from "~/components/ui/button";
-import { ll, makeShortAddr } from "~/lib/utils";
+import { ll, makeShortAddr, printOut } from "~/lib/utils";
 import { Separator } from "./ui/separator";
 
-export default function ReadFromCtrt() {
+const fetchUser = async (id: undefined | string) => {
+	ll("fetchUser()...");
+	if (typeof id === "string") {
+		const response = await fetch(`https://swapi.dev/api/people/${id}/`);
+		return response.json();
+	}
+	return null;
+};
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+interface ReadFromCtrtProps extends ComponentProps<any> {
+	// add props here
+}
+const ReadFromCtrt: Component<ReadFromCtrtProps> = (
+	props: ReadFromCtrtProps,
+) => {
+	const [userId, setUserId] = createSignal(undefined);
+	const [user] = createResource(userId, fetchUser);
+	ll("userId:", userId(), "user:", user());
 	/*  const { chainType, isInitialized, chainName, chainId, wallet, err, tokenAddr, nftAddr, salesAddr, walletBalcNative, walletBalcToken, nftOriginalOwner,
     walletNftArray, salesBalcNative, salesBalcToken,
     salesNftArray, nativeAssetName, nativeAssetSymbol, nativeAssetDecimals, tokenName, tokenSymbol, addr1Def, addr2Def, } = useWeb3Store(
@@ -25,9 +50,25 @@ export default function ReadFromCtrt() {
 	const salesNftArray = [1, 2, 3, 4, 5, 6, 7];
 
 	return (
-		<div id="readFromCtrt" class="flex flex-col text-foreground">
+		<div
+			id="readFromCtrt"
+			class="flex flex-col text-foreground border border-sky-500 rounded"
+		>
 			<h1 class="text-lg font-black">ReadFromCtrt</h1>
-			<div class="my-2 break-all mb-3 text-left">
+			<div class="my-2 mx-2 break-all text-left">
+				<span>User:{printOut(user())}</span>
+				<Show when={user.loading}>
+					<p>Loading...</p>
+				</Show>
+				<Switch>
+					<Match when={user.error}>
+						<span>Error: {user.error()}</span>
+					</Match>
+					<Match when={user()}>
+						<div>{JSON.stringify(user())}</div>
+					</Match>
+				</Switch>
+
 				<p>
 					Chain: {chainName}, chainId: {chainId}
 				</p>
@@ -41,7 +82,7 @@ export default function ReadFromCtrt() {
 				<p>User NFT(s): {walletNftArray.toString() || "none"}</p>
 			</div>
 
-			<div class="break-all text-left">
+			<div class="mx-2 mb-2 break-all text-left">
 				<p>Sales Contract: {makeShortAddr(salesAddr)}</p>
 				<p>
 					Sales Contract {nativeAssetSymbol} Balance: {salesBalcNative}
@@ -52,11 +93,11 @@ export default function ReadFromCtrt() {
 				<p>Sales Contract NFT(s): {salesNftArray.toString() || "none"}</p>
 			</div>
 
-			<p class="font-semibold break-all my-3">Read output: {}</p>
-
 			<Separator />
-			<div class="break-all">
-				<p>Deployed Contract Addresses:</p>
+			<p class="font-semibold break-all mt-2 mb-1">Read output: {}</p>
+
+			<div class="mb-2 break-all">
+				<p>Deployed Contracts:</p>
 				<p>
 					<span>Token:</span> {tokenAddr}
 				</p>
@@ -69,4 +110,5 @@ export default function ReadFromCtrt() {
 			</div>
 		</div>
 	);
-}
+};
+export default ReadFromCtrt;

@@ -45,28 +45,35 @@ const Web3Form: Component<Web3FormProps> = (props: Web3FormProps) => {
 	};
 
 	return (
-		<div id="web3Form" class="flex flex-col gap-2">
+		<div
+			id="web3Form"
+			class="flex flex-col gap-2 border border-sky-500 rounded"
+		>
 			<h1 class="text-lg font-black">Web3Form</h1>
-			<div class="flex">
+			<div class="mx-2 flex">
 				<h1 class="mr-2">Switch</h1>
 				<Switch checked={switchValue()} onChange={setSwitchValue}>
 					<SwitchControl>
 						<SwitchThumb />
 					</SwitchControl>
 				</Switch>
-				<span>SwitchValue: {switchValue() ? "true" : "false"}</span>
+				<span class="ml-1">
+					SwitchValue: {switchValue() ? "true" : "false"}
+				</span>
 			</div>
 			<RadioGroup value={radioValue()} onChange={setRadioValue}>
-				<For each={radioOptions}>
-					{(option) => (
-						<RadioGroupItem value={option}>
-							<RadioGroupItemLabel>{option}</RadioGroupItemLabel>
-						</RadioGroupItem>
-					)}
-				</For>
+				<div class="flex flex-row">
+					<For each={radioOptions}>
+						{(option) => (
+							<RadioGroupItem value={option}>
+								<RadioGroupItemLabel>{option}</RadioGroupItemLabel>
+							</RadioGroupItem>
+						)}
+					</For>
+				</div>
 			</RadioGroup>
-			<span>RadioValue: {radioValue()}</span>
-			<div class="flex my-2">
+			<span class="mx-2 text-left">RadioValue: {radioValue()}</span>
+			<div class="flex my-2 mx-2">
 				<h1 class="font-bold pt-2 mr-2">Number Input: </h1>
 				<NumberField
 					class="flex flex-col w-36 gap-2"
@@ -84,7 +91,7 @@ const Web3Form: Component<Web3FormProps> = (props: Web3FormProps) => {
 					</NumberFieldErrorMessage>
 				</NumberField>
 			</div>
-			<div class="flex my-2">
+			<div class="flex my-2 mx-2">
 				<TextField
 					class="flex max-w-sm gap-1.5"
 					value={addr()}
@@ -110,7 +117,6 @@ const Web3Form: Component<Web3FormProps> = (props: Web3FormProps) => {
 				<PopoverContent>Popover content</PopoverContent>
 			</Popover>
 			<DialogCard />
-			{" - "}
 			<A
 				href="https://docs.solidjs.com/quick-start"
 				class="text-sky-600 hover:underline"
