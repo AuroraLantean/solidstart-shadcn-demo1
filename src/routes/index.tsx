@@ -4,13 +4,16 @@ import TopRight from "~/components/TopRight";
 import Web3Form from "~/components/Web3Form";
 import { ll, printOut } from "~/lib/utils";
 import { initWallet, web3StateDefault } from "~/lib/web3init";
+import { useCartContext } from "../../context/CartContext";
 
 export default function Home() {
 	const ethAddr1 = import.meta.env.VITE_PUBLIC_ETHEREUM_ADDR2;
+	const { state, setState } = useCartContext();
 	ll(ethAddr1);
 	let initOut = web3StateDefault;
 	onMount(async () => {
 		initOut = await initWallet();
+		setState({ ...initOut });
 	});
 
 	return (

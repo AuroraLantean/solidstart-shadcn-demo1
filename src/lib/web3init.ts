@@ -106,13 +106,17 @@ export const initPhantomWallet = async () => {
 		ll("try reconnecting...");
 		const resp = await provider.connect({ onlyIfTrusted: true });
 		const addrWallet = afterConnected(provider, resp);
-		return { ...web3StateDefault, isConnected: true };
+		if (!addrWallet)
+			return { ...web3StateDefault, isConnected: true, account: "invalid" };
+		return { ...web3StateDefault, isConnected: true, account: addrWallet };
 	} catch (err) {
 		try {
 			ll("try to connect first time");
 			const resp = await provider.connect();
 			const addrWallet = afterConnected(provider, resp);
-			return { ...web3StateDefault, isConnected: true };
+			if (!addrWallet)
+				return { ...web3StateDefault, isConnected: true, account: "invalid" };
+			return { ...web3StateDefault, isConnected: true, account: addrWallet };
 		} catch (err) {
 			return {
 				...web3StateDefault,

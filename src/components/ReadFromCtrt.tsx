@@ -8,8 +8,7 @@ import {
 	Switch,
 	useContext,
 } from "solid-js";
-import { Button } from "~/components/ui/button";
-import { ll, makeShortAddr, printOut } from "~/lib/utils";
+import { getShortAddr, ll, makeShortAddr, printOut } from "~/lib/utils";
 import { Separator } from "./ui/separator";
 import { useCartContext } from "../../context/CartContext";
 
@@ -60,10 +59,9 @@ const ReadFromCtrt: Component<ReadFromCtrtProps> = (
 		>
 			<h1 class="text-lg font-black">ReadFromCtrt</h1>
 			<div class="my-2 mx-2 break-all text-left">
-				<span>User:{printOut(user())}</span>
-				...
-				<span>isConnected: {printOut(state.isConnected)}</span>
-				<span>nftIds: {JSON.stringify(state.nftIds)}</span>
+				<p>User: {getShortAddr(state.account)}</p>
+				<p>isConnected: {printOut(state.isConnected)}</p>
+				<p>nftIds: {JSON.stringify(state.nftIds)}</p>
 				<Show when={user.loading}>
 					<p>Loading...</p>
 				</Show>

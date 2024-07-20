@@ -35,3 +35,8 @@ export const parseIntSafe = (input: any) => {
 	}
 	return out;
 };
+
+export const getShortAddr = (str: string) => {
+	if (str.length === 0) return "loading...";
+	return `${str.slice(0, 6)}....${str.slice(str.length - 4)}`;
+};
