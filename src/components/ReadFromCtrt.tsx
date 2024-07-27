@@ -11,7 +11,13 @@ import {
 import { getShortAddr, ll, makeShortAddr, printOut } from "~/lib/utils";
 import { Separator } from "./ui/separator";
 import { useCartContext } from "../../context/CartContext";
+import { action, useAction, useSubmission } from "@solidjs/router";
 
+//act as a backend, or this can be any API
+const echo = action(async (message: string) => {
+	await new Promise((resolve, reject) => setTimeout(resolve, 1000));
+	console.log(message);
+});
 const fetchUser = async (id: undefined | string) => {
 	ll("fetchUser()...");
 	if (typeof id === "string") {
@@ -28,6 +34,11 @@ const ReadFromCtrt: Component<ReadFromCtrtProps> = (
 	props: ReadFromCtrtProps,
 ) => {
 	const { state, setState } = useCartContext();
+
+	//Server Action
+	const myEcho = useAction(echo);
+	myEcho("Hello from Frontend to serverAction!");
+	//const echoing = useSubmission(echo);
 
 	const [userId, setUserId] = createSignal(undefined);
 	const [user] = createResource(userId, fetchUser);

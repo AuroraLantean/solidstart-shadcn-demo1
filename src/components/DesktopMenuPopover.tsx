@@ -15,15 +15,13 @@ const DesktopMenuPopover: Component<DesktopMenuPopoverProps> = (
 	return (
 		<Popover>
 			<PopoverTrigger>
-				<Button variant="ghost" class="w-full justify-start">
-					<div class="flex justify-between items-center w-full">
-						<div class="flex gap-2 w-full">
-							<img src="/images/logo16x15.png" alt="Solid logo" />
-							<span>Popover2</span>
-						</div>
-						<Ellipsis size={20} />
+				<div class="flex justify-between items-center w-full">
+					<div class="flex ml-3 gap-2 w-full">
+						<img src="/images/logo16x15.png" alt="Solid logo" />
+						<span>Popover2</span>
 					</div>
-				</Button>
+					<Ellipsis size={20} />
+				</div>
 			</PopoverTrigger>
 			<PopoverContent class="mb-2 w-56 p-3 rounded-[1rem]">
 				<div class="space-y-1">
