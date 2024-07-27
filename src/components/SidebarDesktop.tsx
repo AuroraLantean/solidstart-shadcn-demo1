@@ -12,6 +12,7 @@ import { MoreHorizontal } from "lucide-solid";
 import { ll } from "~/lib/utils";
 import DesktopMenuPopover from "./DesktopMenuPopover";
 import DesktopMenuDrawer from "./DesktopMenuDrawer";
+import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
 interface SidebarDesktopProps extends ComponentProps<any> {
@@ -58,6 +59,11 @@ const SidebarDesktop: Component<SidebarDesktopProps> = (
 							<PopoverTrigger>Popover1</PopoverTrigger>
 							<PopoverContent>PopoverContent</PopoverContent>
 						</Popover>
+
+						<Sheet>
+							<SheetTrigger> Open Sheet</SheetTrigger>
+							<SheetContent>Sheet Content Here</SheetContent>
+						</Sheet>
 					</div>
 
 					<div

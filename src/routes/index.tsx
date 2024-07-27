@@ -1,20 +1,11 @@
-import { onMount } from "solid-js";
 import ReadFromCtrt from "~/components/ReadFromCtrt";
 import TopRight from "~/components/TopRight";
 import Web3Form from "~/components/Web3Form";
 import { ll, printOut } from "~/lib/utils";
-import { initWallet, web3StateDefault } from "~/lib/web3init";
 import { useCartContext } from "../../context/CartContext";
 
 export default function Home() {
-	const ethAddr1 = import.meta.env.VITE_PUBLIC_ETHEREUM_ADDR2;
 	const { state, setState } = useCartContext();
-	ll(ethAddr1);
-	let initOut = web3StateDefault;
-	onMount(async () => {
-		initOut = await initWallet();
-		setState({ ...initOut });
-	});
 
 	return (
 		<div class="text-center mx-auto text-gray-700 p-4 text-foreground bg-background">
@@ -23,7 +14,7 @@ export default function Home() {
 				Blockchain DAPP
 			</h1>
 			<div class="font-bold text-3xl">
-				Buy NFT Now! - {printOut(initOut.isConnected)}
+				Buy NFT Now! - {printOut(state.isConnected)}
 			</div>
 
 			<div class="flex flex-col gap-1 md:flex-row md:justify-center lg:gap-5">

@@ -1,5 +1,7 @@
-import type { Component, ComponentProps } from "solid-js";
+import { Show, type Component, type ComponentProps } from "solid-js";
 import { Button } from "./ui/button";
+import { useCartContext } from "../../context/CartContext";
+import { getShortAddr, ll } from "~/lib/utils";
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
 interface WalletButtonProps extends ComponentProps<any> {
@@ -9,10 +11,15 @@ interface WalletButtonProps extends ComponentProps<any> {
 const WalletButton: Component<WalletButtonProps> = (
 	props: WalletButtonProps,
 ) => {
+	const { state, setState } = useCartContext();
 	//provider.disconnect();
 	return (
 		<div id="walletButton" class="fixed top-1 sm:top-2 right-9">
-			<Button class="h-8 rounded-lg">Connect Wallet</Button>
+			<Button class="h-8 rounded-lg">
+				<Show when={state.account.length > 0} fallback={"Connect Wallet"}>
+					{getShortAddr(state.account)}
+				</Show>
+			</Button>
 		</div>
 	);
 };

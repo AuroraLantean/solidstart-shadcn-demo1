@@ -1,7 +1,8 @@
 import type { Component, ComponentProps } from "solid-js";
-import { createContext, useContext } from "solid-js";
+import { createContext, onMount, useContext } from "solid-js";
 import { createStore } from "solid-js/store";
-import { web3StateDefault, type Web3StatesT } from "~/lib/web3init";
+import { ll } from "~/lib/utils";
+import { initWallet, web3StateDefault, type Web3StatesT } from "~/lib/web3init";
 
 export type cartContextType = {
 	state: Web3StatesT;
@@ -16,8 +17,14 @@ export const CartContext = createContext<cartContextType>(); //not to export glo
 export const CartContextProvider: Component<CartContextProviderProps> = (
 	props: CartContextProviderProps,
 ) => {
+	const ethAddr1 = import.meta.env.VITE_PUBLIC_ETHEREUM_ADDR2;
+	ll(ethAddr1);
 	const [state, setState] = createStore<Web3StatesT>(web3StateDefault);
-
+	onMount(async () => {
+		ll("onMount from CartContextProvider()");
+		const initOut = await initWallet();
+		setState({ ...initOut });
+	});
 	return (
 		<CartContext.Provider value={{ state, setState }}>
 			{props.children}
